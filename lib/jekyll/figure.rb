@@ -37,8 +37,8 @@ module Jekyll
           figure_class = " class\=\"#{figure_class}\""
         end
 
-        # Content: convert markdown and remove paragraphs containing images
-        figure_main = converter.convert(super(context)).gsub(/^<p>\s*((<img[^<]+?)+)\s*<\/p>(.*)/, '\\1').gsub!(/[\n]+/, "\n  ");
+        # Content: convert markdown and remove paragraphs
+        figure_main = converter.convert(super(context)).gsub(/<\/?p[^>]*>/, '').chomp;
 
         # Used to escape markdown parsing rendering
         markdown_escape = "\ "
